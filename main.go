@@ -41,7 +41,7 @@ func performTask() {
 
 func main() {
 	// ADD IN YOUR OWN REPO URL HERE
-	remoteURL := "YOUR_REPO_HERE"
+	remoteURL := "https://github.com/adityakakarla/test-repo.git"
 	// ADD IN YOUR OWN REPO URL HERE
 
 	entries, err := os.ReadDir("./")
