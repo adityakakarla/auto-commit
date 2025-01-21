@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+// YOU MUST ADD IN A REMOTE URL IN main()
+
 func performTask() {
 	fmt.Println("Task performed at:", time.Now())
 
@@ -38,6 +40,9 @@ func performTask() {
 }
 
 func main() {
+	// ADD IN YOUR OWN REPO URL HERE
+	remoteURL := "YOUR_REPO_HERE"
+	// ADD IN YOUR OWN REPO URL HERE
 
 	entries, err := os.ReadDir("./")
 	if err != nil {
@@ -59,7 +64,6 @@ func main() {
 			log.Fatal(err)
 		}
 
-		remoteURL := "https://github.com/adityakakarla/auto-commit.git"
 		cmd = exec.Command("git", "remote", "add", "origin", remoteURL)
 		if err := cmd.Run(); err != nil {
 			fmt.Println("Error adding remote origin")
