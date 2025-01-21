@@ -6,8 +6,6 @@ import (
 	"os"
 	"os/exec"
 	"time"
-
-	"github.com/joho/godotenv"
 )
 
 func performTask() {
@@ -19,7 +17,7 @@ func performTask() {
 	}
 	defer file.Close()
 
-	if _, err := file.WriteString("New text to append\n"); err != nil {
+	if _, err := file.WriteString("go tritons\n"); err != nil {
 		log.Fatal(err)
 	}
 
@@ -40,10 +38,6 @@ func performTask() {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	entries, err := os.ReadDir("./")
 	if err != nil {
@@ -63,11 +57,6 @@ func main() {
 		if err := cmd.Run(); err != nil {
 			fmt.Println("Error initializing git repository")
 			log.Fatal(err)
-		}
-
-		pat := os.Getenv("GITHUB_PERSONAL_ACCESS_TOKEN")
-		if pat == "" {
-			log.Fatal("GitHub Personal Access Token not found in environment variables")
 		}
 
 		remoteURL := "https://github.com/adityakakarla/auto-commit.git"
@@ -109,5 +98,6 @@ func main() {
 		fmt.Println("Next run in:", duration)
 		time.Sleep(duration)
 		performTask()
+		fmt.Println("pushed to Github")
 	}
 }
